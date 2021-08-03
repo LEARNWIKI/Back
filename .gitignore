@@ -1,7 +1,7 @@
 personal
 .idea
 cmake-build-debug
-app/learnwiki/main/migrations
+app/learnwiki/lw_main/migrations
 
 tmp.py
 # supervisor logs
