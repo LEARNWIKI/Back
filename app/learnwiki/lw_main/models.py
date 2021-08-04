@@ -44,19 +44,18 @@ class Node(BaseModel):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="nodes")
 
     def get_all_edges(self):
-        nodes1 = [node for node in self.edges_1.all()]
-        nodes2 = [node for node in self.edges_2.all()]
+        nodes1 = [node for node in self.edges_out.all()]
+        nodes2 = [node for node in self.edges_in.all()]
         return nodes1 + nodes2
 
 
 class Edge(BaseModel):
     # TODO продумать как будут храниться данные внутри еджей, скорее всего массив
     properties = models.JSONField(null=True)
-    # TODO замеить на enum, либо вообще is_bidirectional тупо
-    direction = models.CharField(max_length=32, default='bidirectional')
+    is_bidirectional = models.BooleanField(default=False)
     # TODO тригер на запрет ссылок на одну и ту же ноду(хотя может и не надо)
-    node_1 = models.ForeignKey(Node, on_delete=models.CASCADE, related_name='edges_1')
-    node_2 = models.ForeignKey(Node, on_delete=models.CASCADE, related_name='edges_2')
+    node_out = models.ForeignKey(Node, on_delete=models.CASCADE, related_name='edges_out')
+    node_in = models.ForeignKey(Node, on_delete=models.CASCADE, related_name='edges_in')
 
 
 class Links(BaseModel):

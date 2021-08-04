@@ -45,19 +45,19 @@ class EverythingTestCase(TestCase):
                       Node.objects.create(title="Память", project=project),
                       Node.objects.create(title="Алгоритмы", project=project)]
 
-        self.edges = [Edge.objects.create(node_1=self.nodes[0], node_2=self.nodes[1]),
-                      Edge.objects.create(node_1=self.nodes[2], node_2=self.nodes[1], direction='forward'),
-                      Edge.objects.create(node_1=self.nodes[0], node_2=self.nodes[5]),
-                      Edge.objects.create(node_1=self.nodes[3], node_2=self.nodes[2], direction='backward'),
-                      Edge.objects.create(node_1=self.nodes[4], node_2=self.nodes[1], direction='backward'),
-                      Edge.objects.create(node_1=self.nodes[5], node_2=self.nodes[0], direction='backward')]
+        self.edges = [Edge.objects.create(node_out=self.nodes[0], node_in=self.nodes[1]),
+                      Edge.objects.create(node_out=self.nodes[2], node_in=self.nodes[1], is_bidirectional=True),
+                      Edge.objects.create(node_out=self.nodes[0], node_in=self.nodes[5]),
+                      Edge.objects.create(node_out=self.nodes[3], node_in=self.nodes[2]),
+                      Edge.objects.create(node_out=self.nodes[4], node_in=self.nodes[1], is_bidirectional=True),
+                      Edge.objects.create(node_out=self.nodes[5], node_in=self.nodes[0])]
 
     def test_everything(self):
         test_user = User.objects.get(username='TeaDove')
         [project._log() for project in test_user.projects.all()]
         logger.info('Edges')
         for edge in self.edges:
-            to_return = '{}: {}, {}'.format(edge.id, edge.node_1.id, edge.node_2.id)
+            to_return = '{}: {}, {}'.format(edge.id, edge.node_in.id, edge.node_out.id)
             logger.info(to_return)
 
         logger.info('Nodes')
