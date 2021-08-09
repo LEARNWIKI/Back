@@ -1,7 +1,8 @@
-personal
+poetry.lock
+#personal
 .idea
 cmake-build-debug
-app/learnwiki/lw_main/migrations
+learnwiki/lw_main/migrations
 
 tmp.py
 # supervisor logs

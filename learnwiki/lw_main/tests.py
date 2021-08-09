@@ -1,13 +1,11 @@
 from django.test import TestCase
 from loguru import logger
 
-from lw_main.models import User, Project, Node, Edge, Links
-from loguru import logger
+from .models import User, Project, Node, Edge, Links
+
 
 class UserTestCase(TestCase):
     def setUp(self):
-        # Animal.objects.create(name="lion", sound="roar")
-        # Animal.objects.create(name="cat", sound="meow")
         User.objects.create_user("TeaDove", password="best password ever")
         User.objects.create_user("TeaSparrow", password="best password ever")
         User.objects.create_user("MeeKey", password="best password ever")

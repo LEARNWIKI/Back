@@ -4,8 +4,8 @@ from loguru import logger
 
 
 class BaseModel(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)   # DRY not followed
-    updated_at = models.DateTimeField(auto_now=True)   # DRY not followed
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         """
@@ -31,6 +31,7 @@ class User(BaseModel, DjangoUser):
 class Project(BaseModel):
     title = models.TextField()
     description = models.TextField(null=True)
+    is_public = models.BooleanField(default=False)
     # TODO использовать более оптимальные типы
     edge_properties = models.JSONField(null=True)
     node_properties = models.JSONField(null=True)
