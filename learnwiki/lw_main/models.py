@@ -20,11 +20,24 @@ class BaseModel(models.Model):
     def _log(self):
         logger.info(str(self))
 
+    @classmethod
+    def create(cls, *args, **kwargs):
+        new_obj = cls.objects.create(*args, **kwargs)
+        new_obj._log()
+        return new_obj
+
     class Meta:
         abstract = True
 
 
 class User(BaseModel, DjangoUser):
+
+    @classmethod
+    def create(cls, *args, **kwargs):
+        new_obj = cls.objects.create_user(*args, **kwargs)
+        new_obj._log()
+        return new_obj
+
     pass
 
 
@@ -59,8 +72,9 @@ class Edge(BaseModel):
     node_in = models.ForeignKey(Node, on_delete=models.CASCADE, related_name='edges_in')
 
 
-class Links(BaseModel):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="links")
-    url = models.TextField()
-    right = models.CharField(max_length=32)
+# TODO вернуть, когда нужно будет
+# class Links(BaseModel):
+#     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="links")
+#     url = models.TextField()
+#     right = models.CharField(max_length=32)
 

@@ -1,7 +1,7 @@
 from django.test import TestCase
 from loguru import logger
 
-from .models import User, Project, Node, Edge, Links
+from .models import User, Project, Node, Edge
 
 
 class UserTestCase(TestCase):
