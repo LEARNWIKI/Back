@@ -2,7 +2,7 @@ poetry.lock
 #personal
 .idea
 cmake-build-debug
-learnwiki/lw_main/migrations
+#learnwiki/lw_main/migrations
 
 tmp.py
 # supervisor logs
