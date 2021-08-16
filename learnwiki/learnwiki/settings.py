@@ -81,7 +81,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'learnwiki.wsgi.application'
-
+USE_X_FORWARDED_HOST=True
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
