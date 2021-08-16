@@ -1,4 +1,5 @@
 # Deployment
+Без nginx
 ```bash
 # Склонируйте репозиторий
 git clone https://github.com/LEARNWIKI/learnwiki_backend
@@ -12,9 +13,9 @@ poetry install
 
 # Мигрируйте и протестируйте
 cd learnwiki
-python manager.py makemigrations
-python manager.py migrate
-python manager.py test
+python manage.py makemigrations
+python manage.py migrate
+python manage.py test
 
 # Запустите
 python3 manage.py runserver localhost:9999
@@ -26,3 +27,11 @@ python = "^3.8"
 Django = "^3.2.6"
 loguru = "^0.5.3"
 ```
+
+# TODO
+- [ ] починить cors
+- [ ] добавить X и Y
+- [ ] добавить авторизацию
+- [ ] добавить аутентификацию
+- [X] нормальный url давать в графе url
+- [ ] выдавать айдишники

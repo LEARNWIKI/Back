@@ -6,7 +6,10 @@ from .models import User, Project, Node, Edge
 router = routers.DefaultRouter()
 
 
+# TODO генерить сериализаторы автоматически
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField()
+
     class Meta:
         model = User
         exclude = ('password', 'last_login', 'is_superuser', 'is_staff', 'is_active', 'date_joined', 'groups',
@@ -19,6 +22,8 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class ProjectSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField()
+
     class Meta:
         model = Project
         fields = '__all__'
@@ -30,6 +35,8 @@ class ProjectViewSet(viewsets.ModelViewSet):
 
 
 class NodeSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField()
+
     class Meta:
         model = Node
         fields = '__all__'
@@ -41,6 +48,8 @@ class NodeViewSet(viewsets.ModelViewSet):
 
 
 class EdgeSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField()
+
     class Meta:
         model = Edge
         fields = '__all__'

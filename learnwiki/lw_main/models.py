@@ -56,6 +56,8 @@ class Node(BaseModel):
     # TODO продумать как будут храниться данные внутри нод
     properties = models.JSONField(null=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="nodes")
+    x = models.IntegerField(default=0)
+    y = models.IntegerField(default=0)
 
     def get_all_edges(self):
         nodes1 = [node for node in self.edges_out.all()]
