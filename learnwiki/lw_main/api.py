@@ -7,7 +7,7 @@ router = routers.DefaultRouter()
 
 
 # TODO генерить сериализаторы автоматически
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     id = serializers.ReadOnlyField()
 
     class Meta:
@@ -21,7 +21,7 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 
-class ProjectSerializer(serializers.HyperlinkedModelSerializer):
+class ProjectSerializer(serializers.ModelSerializer):
     id = serializers.ReadOnlyField()
 
     class Meta:
@@ -34,7 +34,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
     serializer_class = ProjectSerializer
 
 
-class NodeSerializer(serializers.HyperlinkedModelSerializer):
+class NodeSerializer(serializers.ModelSerializer):
     id = serializers.ReadOnlyField()
 
     class Meta:
@@ -47,7 +47,7 @@ class NodeViewSet(viewsets.ModelViewSet):
     serializer_class = NodeSerializer
 
 
-class EdgeSerializer(serializers.HyperlinkedModelSerializer):
+class EdgeSerializer(serializers.ModelSerializer):
     id = serializers.ReadOnlyField()
 
     class Meta:
